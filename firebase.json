@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "atul22g-clock",
     "public": "public",
     "ignore": [
       "firebase.json",
