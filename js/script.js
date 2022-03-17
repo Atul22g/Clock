@@ -40,5 +40,5 @@ setInterval(() => {
 // loading
 var preloader = document.getElementById("loading");
 function loading() {
-  preloader.style.display = "none";
+  // preloader.style.display = "none";
 }

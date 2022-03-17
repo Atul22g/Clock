@@ -1,16 +1,20 @@
 /* clock 1 */
-*{
+* {
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-html,body{
+
+html,
+body {
+  display: -ms-grid;
   display: grid;
   /* height: 100%; */
   place-items: center;
   background: #000;
 }
-.wrapper{
+
+.wrapper {
   height: 100px;
   width: 360px;
   position: relative;
@@ -18,16 +22,42 @@ html,body{
   border-radius: 10px;
   margin: 100px;
   cursor: default;
-  animation: animate 1.5s linear infinite;
+  -webkit-animation: animate 1.5s linear infinite;
+          animation: animate 1.5s linear infinite;
 }
+
 .wrapper .display,
-.wrapper span{
+.wrapper span {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
-.wrapper .display{
+
+.wrapper span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  background: inherit;
+}
+
+.wrapper span:first-child {
+  -webkit-filter: blur(7px);
+          filter: blur(7px);
+}
+
+.wrapper span:last-child {
+  -webkit-filter: blur(20px);
+          filter: blur(20px);
+}
+
+.wrapper .display {
   z-index: 999;
   height: 85px;
   width: 345px;
@@ -35,7 +65,8 @@ html,body{
   border-radius: 6px;
   text-align: center;
 }
-.display #time{
+
+.display #time {
   line-height: 85px;
   color: #fff;
   font-size: 50px;
@@ -44,28 +75,25 @@ html,body{
   background: linear-gradient(135deg, #14ffe9, #ffeb3b, #ff00e0);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: animate 1.5s linear infinite;
+  -webkit-animation: animate 1.5s linear infinite;
+          animation: animate 1.5s linear infinite;
 }
-@keyframes animate {
-  100%{
-    filter: hue-rotate(360deg);
+
+@-webkit-keyframes animate {
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
   }
 }
-.wrapper span{
-  height: 100%;
-  width: 100%;
-  border-radius: 10px;
-  background: inherit;
-}
-.wrapper span:first-child{
-  filter: blur(7px);
-}
-.wrapper span:last-child{
-  filter: blur(20px);
+
+@keyframes animate {
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+            filter: hue-rotate(360deg);
+  }
 }
 
 /* clock 2 */
-
 #clockContainer {
   position: relative;
   margin: 40px auto;
@@ -74,12 +102,12 @@ html,body{
   border-radius: 10%;
   background-size: 100%;
   background: linear-gradient(135deg, #14ffe9, #ffeb3b, #54f8f0);
-  animation: animate 1.5s linear infinite;
+  -webkit-animation: animate 1.5s linear infinite;
+          animation: animate 1.5s linear infinite;
 }
 
 #num {
   width: 100%;
-
 }
 
 #hour,
@@ -88,8 +116,10 @@ html,body{
   position: absolute;
   background: black;
   border-radius: 10px;
-  transform-origin: bottom;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
 }
+
 #hour {
   width: 1.8%;
   height: 20%;
@@ -100,16 +130,18 @@ html,body{
   background-color: red;
   opacity: 0.8;
 }
+
 #minute {
   width: 1.6%;
   height: 30%;
   top: 19.5%;
   z-index: 2;
   /* display: none; */
-  left:49.7%;
+  left: 49.7%;
   background-color: green;
   opacity: 0.8;
 }
+
 #second {
   /* display: none; */
   width: 1.6%;
@@ -120,14 +152,106 @@ html,body{
   left: 49%;
   opacity: 0.8;
 }
+
 /* loading */
-#loading{
-	position: fixed;
+#loading {
+  position: fixed;
+  z-index: 10;
   top: 0;
-	width: 100%;
-	height: 100vh;
-	background: #fff
-	url('../img/loading.gif')
-	 no-repeat center center;	
-	z-index: 10;
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #00796b;
 }
+
+#loading .center-div {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#loading .center-div .outer-ring {
+  width: 100px;
+  height: 100px;
+  border-top: 4px solid #bdbdbd;
+  border-bottom: 4px solid #bdbdbd;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-animation: rototering 2s linear infinite;
+          animation: rototering 2s linear infinite;
+}
+
+#loading .center-div .middle-ring {
+  width: 80px;
+  height: 80px;
+  border-top: 4px solid white;
+  border-bottom: 4px solid white;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-radius: 50%;
+  position: absolute;
+  animation: rototering 2s linear infinite reverse;
+}
+
+#loading .center-div .inner-ring {
+  width: 60px;
+  height: 60px;
+  border-top: 4px solid #bdbdbd;
+  border-bottom: 4px solid #bdbdbd;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-radius: 50%;
+  position: absolute;
+  -webkit-animation: rototering 2s linear infinite;
+          animation: rototering 2s linear infinite;
+}
+
+#loading .center-div .dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #b2dfdb;
+  position: absolute;
+  -webkit-animation: rototering 2s linear infinite;
+          animation: rototering 2s linear infinite;
+}
+
+@-webkit-keyframes rototering {
+  0% {
+    -webkit-transform: rotate(0deg) scale(0.3);
+            transform: rotate(0deg) scale(0.3);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1.2);
+            transform: rotate(360deg) scale(1.2);
+  }
+}
+
+@keyframes rototering {
+  0% {
+    -webkit-transform: rotate(0deg) scale(0.3);
+            transform: rotate(0deg) scale(0.3);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) scale(1.2);
+            transform: rotate(360deg) scale(1.2);
+  }
+}
+/*# sourceMappingURL=style.css.map */
